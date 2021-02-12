@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+	<TITLE>Room and Item Descriptions Test: My JavaScript "Hello World"</TITLE>
+	<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT">
+	<!--
+	// BEGIN Item Descriptions
+	itemDescriptions = new Array
+	itemDescriptions[0] = "<b>Earth Elemental Statue:</b><br><br><i>A small sculpture of a great, stone arch.</i><br><br>"
+	itemDescriptions[1] = "<b>Wind Elemental Statue:</b><br><br><i>A sculpture of a merlin attacking prey.</i><br><br>"
+	itemDescriptions[2] = "<b>Fire Elemental Statue:</b><br><br>"
+	itemDescriptions[3] = "<b>Water Elemental Statue:</b><br><br><i>A sculpture of a polar bear attacking a seal.</i><br><br>"
+	itemDescriptions[4] = "<b>Wood Elemental Statue:</b><br><br><i>A stone Boabob bonsai.</i><br><br>"
+	itemDescriptions[5] = "<b>Metal Elemental Statue:</b><br><br><i>An exposed clockwork running on a sterling engine.</i><br><br>"
+
+	function returnCookie(cookieName){
+		retVal = ""
+		if (document.cookie == ""){
+			retVal = ""
+		} else {
+			thisCookie = document.cookie.split("; ")
+			for (i=0; i<thisCookie.length; i++){
+				if(thisCookie[i].split("=")[0] == cookieName){
+					retVal = thisCookie[i].split("=")[1]
+				}
+			}
+		}
+		return (retVal)
+	}
+	
+	function inventoryCount(nbcJack){
+		if (nbcJack.search("P") >= 0){
+			return(1+inventoryCount(nbcJack.substring(nbcJack.search("P")+1, nbcJack.length)))
+		} else {
+			return(0)
+		}
+	}
+	
+	function getItem(nbcSally){
+		thisCookie = returnCookie("antiquityPerspectivesBook00")	
+		document.cookie = document.cookie.split("=")[0] + "=" + thisCookie.substring(0,nbcSally+1) + "P" + thisCookie.substring(nbcSally+2, thisCookie.length)
+		document.location = "roomTest.html"
+	}
+	
+	function dropItem(nbcSandy){
+		thisCookie = returnCookie("antiquityPerspectivesBook00")	
+		document.cookie = document.cookie.split("=")[0] + "=" + thisCookie.substring(0,nbcSandy+1) + thisCookie.charAt(0) + thisCookie.substring(nbcSandy+2, thisCookie.length)
+		document.location = "roomTest.html"
+	}
+	
+	function whoaSilver(nbcSandy){
+		document.location = "roomTest.html"
+	}
+	-->
+	</SCRIPT>
+</HEAD>
+
+<body background="../../images/indexBack.jpg">
+
+	<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT">
+	<!--
+	cookieCut = returnCookie("antiquityPerspectivesBook00")
+	itemIndex = parseInt(cookieCut.charAt(8))
+	document.write("<br>")
+	document.write(itemDescriptions[itemIndex] + "<br><br>")
+	document.write("-----<br><br>")
+
+	if (cookieCut.charAt(itemIndex+1) == "P"){
+		document.write("<A HREF = 'javascript:dropItem(" + itemIndex + ")'>Drop this item in the current room.</A><br>")
+	} else {
+		if (inventoryCount(cookieCut) < 2){
+			document.write("<A HREF = 'javascript:getItem(" + itemIndex + ")'>Pick up this item.</A><br>")
+		} else {
+			document.write("<b><i>You cannot carry any more items at this time.</i></b><br>")
+		}
+	}
+	document.write("<A HREF = 'javascript:whoaSilver()'><i>Return to room description...</i></A><br>")
+	-->	
+	</SCRIPT>
+</BODY>
+</HTML>

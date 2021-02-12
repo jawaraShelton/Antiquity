@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+	<TITLE>Room and Item Descriptions Test: My JavaScript "Hello World"</TITLE>
+	<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT">
+	<!--
+
+	itemsDescribed = 0
+
+	// BEGIN Room Descriptions
+	roomDescriptions = new Array 
+	roomDescriptions[1] = "<b>Earth Elemental Room:</b><br><br><i>Dominated by a multi-hued, red-orange stone arch - this room contains the essence of the Earth herself. In the room's center is a roughly-hewn stone pedestal seemingly exploding from the ornately carved floor beneath it.</i><br><br>"
+	roomDescriptions[5] = "<b>Wind Elemental Room:</b><br><br><i>In a scene reminiscent of a natural bowl atop a high cliff is perched a great flying beast taking wing. Encompassing a pedestal. in the room's center is a nest created from piled stone - the pedestal itself looking the same.</i><br><br>"
+	roomDescriptions[4] = "<b>Fire Elemental Room:</b><br><br><i>Despite the utter submersion thereof - Fire leaps from the ring encompassing this room's center. Molten rock flows lazily across the ceiling - its slow, dripping mass sparking long tongues of flame from ceiling to floor as the drops impact. The center of the room contains a stone pedestal - blackened and charred from the exposure - magma oozing lethargically from its cracks.</i><br><br>"
+	roomDescriptions[3] = "<b>The Ceremonial Chamber:</b><br><br><i>To be taken from the text of Antiquity: Perspectives (Book 0)</i><br><br>"
+	roomDescriptions[0] = "<b>Water Elemental Room:</b><br><br><i>Ice is the overwhelming feature in this room - snow completely covering the stone floors. The pedestal - resembling the tip of a small iceburg - sits carefully in the room's center - accessed by a walkway of icy pillars protruding just so from what normally would have been the water's surface - no doubt the very same source of water which flooded this place.</i><br><br>"
+	roomDescriptions[6] = "<b>Wood Elemental Room:</b><br><br><i>A series of miniature trees - bonsai - ornament the room - a portion of a single, great tree 	jutting from the ground and arching over the room in a similar manner to its stony cousin in the earth chamber. Thick, gnarled roots creep from the base of the tree - digging brutally into the stone floors like long, bony fingers into freshly dug earth.</i><br><br>"
+	roomDescriptions[2] = "<b>Metal Elemental Room:</b><br><br><i>A large, heavy, Victorian clockwork dominates the walls of this room - run off of the steam 	welling up from some source unknown. The pedestal - sat majestically atop a polished, Victorian fixture - contains the clock's face framed in oak and carefully protected by a a glass pane. The hands of the clock are created from well-crafted and delicately etched steel blades.</i><br><br>"
+	roomDescriptions[7] = "<b>Passage to the 2nd Floor:</b><br><br><i>Concentric, circular walls have rotated - aligning their openings to reveal a staircase 	leading to the second floor. Ornate carvings of images and magical text adorn the stair-step's facing edges - impressing you as telling some story you have yet to understand.<br><br>"
+	roomDescriptions[9] = "<b>The Earth Circle:</b><br><br>"
+	roomDescriptions[10] = "<b>The Wood Circle:</b><br><br>"
+	roomDescriptions[11] = "<b>The Wind Circle:</b><br><br>"
+	roomDescriptions[12] = "<b>The Fire Circle:</b><br><br>"
+	roomDescriptions[13] = "<b>The Water Circle:</b><br><br>"
+	roomDescriptions[8] = "<b>The Metal Circle:</b><br><br>"
+	roomDescriptions[14] = "<b>The Temple's Great Hall:</b><br><br>"	
+
+	// BEGIN Item Descriptions
+	itemDesc = new Array
+	itemDesc[0] = "its great, stone arch singing its testimony to its strength, beauty, and majesty in nature."
+	itemDesc[1] = "its dramatic, swooping lines depicting a Merlin as it grasps its prey - its sharpened, metal talons piercing stone."
+	itemDesc[2] = "more of a staff, actually - with its flames contained within (and heat eminating from) a glassy sphere at its crown."
+	itemDesc[3] = "its ursine guardian frozen in time as it shakes and rends a seal - its prey - asunder."
+	itemDesc[4] = "its stone Baobob depicting the wisdom of humanity's lifetimes under its limbs."
+	itemDesc[5] = "its exposed Victorian clockwork running on a sterling engine mounted within an elaborate brass framework."
+
+	itemTag = new Array
+	itemTag[0] = "<b>Earth Elemental Statue</b>"
+	itemTag[1] = "<b>Wind Elemental Statue</b>"
+	itemTag[2] = "<b>Fire Elemental Statue</b>"
+	itemTag[3] = "<b>Water Elemental Statue</b>"
+	itemTag[4] = "<b>Wood Elemental Statue</b>"
+	itemTag[5] = "<b>Metal Elemental Statue</b>"
+
+	// Room 0 is not a room that can be visited - so is therefore not a part of the rooms array.
+
+	function returnCookie(cookieName){
+		retVal = ""
+		if (document.cookie == ""){
+			retVal = ""
+		} else {
+			thisCookie = document.cookie.split("; ")
+			for (i=0; i<thisCookie.length; i++){
+				if(thisCookie[i].split("=")[0] == cookieName){
+					retVal = thisCookie[i].split("=")[1]
+				}
+			}
+		}
+		return (retVal)
+	}	
+	
+	function roomCodeToIndex(roomCode){
+		rooms = "ABCDEFGHIJKLMNOQ"
+		for (i=0; i<16; i++){
+			if (roomCode == rooms.charAt(i)) {
+				return i
+			}
+		}
+	}
+
+	function itemWindow(itemIndex){
+		document.cookie = document.cookie.split("=")[0] + "=" + document.cookie.split("=")[1].substring(0,8) + itemIndex
+		document.location = "itemTest.html"
+	}
+
+	function buildRoomDescForItem(Kronk){
+		if (itemsDescribed == 0) {
+			nbcOogieBoogie = 	"Residing in this room is " + "<A HREF= 'javascript:itemWindow(" + nbcLock + ")'>" + itemTag[Kronk] + "</A>" + " - " + itemDesc[Kronk] + " "
+		} else {
+			nbcOogieBoogie = "You also find the " + "<A HREF= 'javascript:itemWindow(" + nbcLock + ")'>" + itemTag[Kronk] + "</A>" + " here - " + itemDesc[Kronk] + " "
+		} 
+		
+		itemsDescribed++
+		return(nbcOogieBoogie)
+	}
+	
+	function resetItemsDescribedCount(){
+		itemsDescribed = 0
+	}
+	
+	-->
+	</SCRIPT>
+</HEAD>
+
+<body background="../../images/indexBack.jpg">
+
+    <div align="center">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td width="100%">
+            <p align="right"><b><i><font color="#0000FF"><a href="javascript:document.location='mapTest.htm'">Return to Map Screen</a></font></i></b></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+	<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT">
+	<!--
+
+	thisCookie = returnCookie("antiquityPerspectivesBook00")
+
+	document.write(roomDescriptions[roomCodeToIndex(thisCookie.charAt(0))])
+
+	for (nbcLock=0; nbcLock<6; nbcLock++){
+		if (thisCookie.charAt(nbcLock+1) == thisCookie.charAt(0)){
+			document.write(buildRoomDescForItem(nbcLock))
+		}
+	}	
+	
+	resetItemsDescribedCount()
+	
+	document.write ("<br><br>-----<br>")
+	//document.write("<b>Items located in room:</b><br>")
+	//document.write ("-----<br><br>")
+	//for (nbcLock=0; nbcLock<6; nbcLock++){
+	//	if (thisCookie.charAt(nbcLock+1) == thisCookie.charAt(0)){
+	//		document.write ("<A HREF= 'javascript:itemWindow(" + nbcLock + ")'>" + itemTag[nbcLock] + "</A>")
+	//	}
+	//}
+	//document.write ("<br>-----<br>")
+	document.write("<b>You are carrying:</b><br>")
+	document.write ("-----<br><br>")
+	for (nbcLock=0; nbcLock<6; nbcLock++){
+		if (thisCookie.charAt(nbcLock+1) == "P"){
+			document.write ("<A HREF= 'javascript:itemWindow(" + nbcLock + ")'>" + itemTag[nbcLock] + "</A><br>")
+		}
+	}
+	-->	
+	</SCRIPT>
+</BODY>
+</HTML>
